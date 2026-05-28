@@ -1,0 +1,639 @@
+/* ==========================================================================
+   1. ОБЩИЕ СТИЛИ И СБРОСЫ
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #000000;
+    background-color: #f5f5f5;
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   2. ГЛАВНЫЙ ЭКРАН (HERO BLOCK)
+   ========================================================================== */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 750px;
+    background: url('../img/cake.jpg') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Контент прижат к низу */
+    padding: 40px 60px;
+}
+
+/* Полупрозрачный фильтр поверх фона главной страницы */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255, 255, 255, 0.05);
+    z-index: 1;
+}
+
+.header, .hero-content, .about-grid-container {
+    position: relative;
+    z-index: 2;
+}
+
+/* ==========================================================================
+   3. ШАПКА САЙТА И НАВИГАЦИЯ
+   ========================================================================== */
+.header {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    align-items: center;
+    gap: 40px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 60px; 
+    
+    /* Эффект матового стекла и градиент */
+    background: linear-gradient(to bottom, 
+        rgba(255, 255, 255, 0.85) 0%, 
+        rgba(255, 255, 255, 0.6) 50%, 
+        rgba(255, 255, 255, 0) 100%
+    );
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px; 
+    line-height: 1.1;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    color: #000000;
+    white-space: nowrap;
+}
+
+/* Меню навигации */
+.nav {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+/* Объединенные базовые стили для ВСЕХ ссылок меню */
+.nav a {
+    text-decoration: none;
+    color: #000000;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px; /* Крупный читаемый размер */
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 6px;
+    display: inline-block;
+    white-space: nowrap;
+    border: 1.5px solid transparent; /* Заготовка под рамку, чтобы текст не прыгал */
+    transition: all 0.2s ease-in-out;
+}
+
+/* Стандартная серая рамка для пассивных вкладок */
+.nav a.nav-bordered {
+    border: 1px solid #e2e8f0;
+    color: #333333;
+}
+
+.nav a.nav-bordered:hover {
+    border-color: #a0aec0;
+    color: #000000;
+}
+
+/* Активная вкладка (сплошная черная обводка) */
+.nav a.active {
+    border: 1.5px solid #000000;
+    font-weight: 600;
+    color: #000000;
+    pointer-events: none;
+}
+
+/* Контакты и иконки в шапке */
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.contacts {
+    font-size: 15px;
+    text-align: left;
+    line-height: 1.5;
+    color: #000000;
+}
+
+.phone {
+    font-size: 22px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+    color: #000000;
+    white-space: nowrap;
+}
+
+.vk-link {
+    color: #000000;
+    text-decoration: none;
+    font-size: 35px;
+    transition: opacity 0.3s ease;
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-left: 10px;
+}
+
+.header-icons a {
+    color: #000000;
+    font-size: 24px;
+    transition: opacity 0.3s ease;
+    text-decoration: none;
+}
+
+.vk-link:hover, .header-icons a:hover {
+    opacity: 0.6;
+}
+
+/* ==========================================================================
+   4. КОНТЕНТ ГЛАВНОЙ СТРАНИЦЫ (HERO CONTENT)
+   ========================================================================== */
+.hero-content {
+    max-width: 800px;
+    margin-bottom: 40px;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 25px;
+    letter-spacing: 0.5px;
+    color: #000000;
+}
+
+.catalog-btn {
+    display: inline-block;
+    color: #000000;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #000000;
+    padding-bottom: 5px;
+    transition: opacity 0.3s ease;
+}
+
+.catalog-btn:hover {
+    opacity: 0.6;
+}
+
+/* ==========================================================================
+   5. БЛОК "ПОЧЕМУ ВЫБИРАЮТ НАС"
+   ========================================================================== */
+.features-section {
+    padding: 100px 60px;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.features-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: #212529;
+    margin-bottom: 50px;
+    letter-spacing: -0.5px;
+}
+
+.features-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.feature-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 40px 30px;
+    flex: 1;
+    min-width: 280px;
+    max-width: 360px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
+
+.feature-icon {
+    font-size: 40px;
+    color: #6c757d;
+    margin-bottom: 20px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #212529;
+    margin-bottom: 15px;
+}
+
+.feature-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #6c757d;
+    font-weight: 400;
+}
+
+/* ==========================================================================
+   6. БЛОК "КАК МЫ РАБОТАЕМ"
+   ========================================================================== */
+.workflow-section {
+    padding: 120px 60px;
+    background-color: #929ec4; 
+    background-image: url('../img/raspberries-decor.png'); 
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-size: auto 80%; 
+    position: relative;
+    text-align: center;
+}
+
+.workflow-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 38px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 70px;
+    letter-spacing: -0.5px;
+}
+
+.workflow-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.workflow-step {
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
+    text-align: left;
+}
+
+.step-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.step-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 400;
+}
+
+.workflow-link {
+    color: #ffffff;
+    text-decoration: underline;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+}
+
+.workflow-link:hover {
+    opacity: 0.8;
+}
+
+/* ==========================================================================
+   7. СТРАНИЦА "О МНЕ" (ДВУХКОЛОНОЧНЫЙ МАКЕТ)
+   ========================================================================== */
+.hero-about {
+    background: #ffffff !important; /* Белый фон вместо торта */
+    height: auto !important;
+    min-height: 100vh;
+}
+
+.hero-about::before {
+    display: none !important; /* Отключаем фильтр */
+}
+
+/* Контейнер-сетка */
+.about-grid-container {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 160px auto 60px auto;
+    width: 100%;
+}
+
+.about-content {
+    text-align: left;
+}
+
+.about-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px;
+    font-weight: 500;
+    color: #000000;
+    margin-bottom: 25px;
+}
+
+.about-text-block p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+/* Серая контентная плашка */
+.about-text-block .highlight-p {
+    background-color: #f4f5f7;
+    padding: 22px;
+    border-radius: 8px;
+    border-left: 3px solid #000000;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.about-text-block .delivery-p {
+    font-weight: 600;
+    color: #000000;
+}
+
+/* Кнопка */
+.about-btn {
+    display: inline-block;
+    background-color: #000000;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 14px 32px;
+    border-radius: 25px;
+    margin-top: 10px;
+    transition: all 0.2s ease;
+}
+
+.about-btn:hover {
+    opacity: 0.8;
+    transform: translateY(-1px);
+}
+
+/* Фотография */
+.about-image-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.about-img {
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* ==========================================================================
+   8. АДАПТИВНОСТЬ (MEDIA QUERIES)
+   ========================================================================== */
+
+/* Большие планшеты и десктопы */
+@media (max-width: 1200px) {
+    .header { gap: 20px; }
+    .nav a { font-size: 18px; }
+    .phone { font-size: 19px; }
+}
+
+/* Средние планшеты */
+@media (max-width: 992px) {
+    .features-section { padding: 60px 30px; }
+    .features-title { font-size: 28px; margin-bottom: 35px; }
+    .feature-card { padding: 30px 20px; }
+    
+    .workflow-section { padding: 70px 30px; background-size: 150px auto; }
+    .workflow-title { font-size: 30px; margin-bottom: 40px; }
+    .workflow-container { gap: 35px; }
+    .workflow-step { max-width: 100%; }
+
+    /* Перестроение страницы "О мне" в одну колонку */
+    .about-grid-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        margin-top: 120px;
+        padding: 0 20px;
+    }
+    .about-image-wrapper { order: 2; }
+    .about-content { order: 1; }
+    .about-img { max-width: 100%; }
+}
+/* ==========================================================================
+   9. СТРАНИЦА КАТАЛОГА
+   ========================================================================== */
+.catalog-page {
+    background: #ffffff !important;
+    min-height: 100vh;
+    padding-top: 140px; /* Отступ сверху, чтобы шапка не перекрывала заголовок */
+}
+
+.catalog-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px 80px 20px;
+}
+
+.catalog-main-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 500;
+    color: #000000;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+/* Сетка для карточек */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 40px;
+}
+
+/* Карточка товара */
+.product-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+/* Контейнер для фото */
+.product-img-wrapper {
+    width: 100%;
+    height: 260px;
+    background-color: #f7fafc; /* Временный фон, пока нет картинок */
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Текст карточки */
+.product-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 10px;
+}
+
+.product-desc {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #4a5568;
+    margin-bottom: 25px;
+    flex-grow: 1; /* Подтягивает нижнюю часть к одному уровню */
+}
+
+/* Низ карточки (Цена + Кнопка) */
+.product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #edf2f7;
+    padding-top: 15px;
+}
+
+.product-price {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #000000;
+}
+
+.order-btn {
+    display: inline-block;
+    background-color: #000000;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 22px;
+    border-radius: 20px;
+    transition: background-color 0.2s ease;
+}
+
+.order-btn:hover {
+    background-color: #333333;
+}
+
+/* Мобильная адаптация */
+@media (max-width: 768px) {
+    .catalog-main-title { font-size: 30px; margin-bottom: 30px; }
+    .products-grid { gap: 25px; }
+}
+/* ==========================================================================
+   10. МОБИЛЬНАЯ АДАПТАЦИЯ ДЛЯ ЭКРАНОВ ДО 768px (СМАРТФОНЫ)
+   ========================================================================== */
+@media (max-width: 768px) {
+    
+    /* 1. Превращаем шапку из строчной сетки в вертикальную стопку */
+    .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 20px 15px;
+        position: relative; /* Шапка больше не перекрывает контент, а аккуратно идет сверху */
+        background: #ffffff; /* На мобильных делаем сплошной белый фон для читаемости */
+    }
+
+    /* 2. Делаем пункты меню более компактными */
+    .nav {
+        gap: 10px;
+        flex-wrap: wrap; /* Если не влезут в строку, перенесутся на следующую */
+        justify-content: center;
+    }
+
+    .nav a {
+        font-size: 15px; /* Уменьшаем шрифт меню для пальцев */
+        padding: 5px 10px;
+    }
+
+    /* 3. Выравниваем контакты по центру */
+    .contacts {
+        text-align: center;
+    }
+
+    .phone {
+        font-size: 18px; /* Чуть уменьшаем телефон */
+    }
+
+    /* 4. Корректируем главный экран (Hero) */
+    .hero {
+        height: auto;
+        min-height: calc(100vh - 180px); /* Вычитаем высоту мобильной шапки */
+        padding: 30px 20px;
+    }
+
+    /* 5. Уменьшаем огромный заголовок h1, чтобы он не разбивался некрасиво */
+    h1 {
+        font-size: 34px; 
+        margin-bottom: 20px;
+    }
+}
