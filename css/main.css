@@ -1,6 +1,3 @@
-/* ==========================================================================
-   1. ОБЩИЕ СТИЛИ И СБРОСЫ
-   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -14,9 +11,7 @@ body {
     overflow-x: hidden;
 }
 
-/* ==========================================================================
-   2. ГЛАВНЫЙ ЭКРАН (HERO BLOCK)
-   ========================================================================== */
+/* Главный экран */
 .hero {
     position: relative;
     width: 100%;
@@ -26,11 +21,12 @@ body {
     background-size: cover;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end; /* Контент прижат к низу */
+    
+    justify-content: flex-end; 
+    
     padding: 40px 60px;
 }
 
-/* Полупрозрачный фильтр поверх фона главной страницы */
 .hero::before {
     content: '';
     position: absolute;
@@ -39,35 +35,38 @@ body {
     z-index: 1;
 }
 
-.header, .hero-content, .about-grid-container {
+.header, .hero-content {
     position: relative;
     z-index: 2;
 }
 
-/* ==========================================================================
-   3. ШАПКА САЙТА И НАВИГАЦИЯ
-   ========================================================================== */
 .header {
     display: grid;
     grid-template-columns: auto 1fr auto auto;
     align-items: center;
     gap: 40px;
+    width: 100%;
+    
+    /* Абсолютное позиционирование растянет шапку идеально по краям */
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
+    /* Возвращаем внутренние отступы, чтобы текст не прижимался к стеклу */
     padding: 30px 60px; 
     
-    /* Эффект матового стекла и градиент */
+    /* Красивый градиент от благородного белого/кремового к полностью прозрачному */
     background: linear-gradient(to bottom, 
         rgba(255, 255, 255, 0.85) 0%, 
         rgba(255, 255, 255, 0.6) 50%, 
         rgba(255, 255, 255, 0) 100%
     );
+    
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
 }
 
+/* Логотип — крупный и весомый */
 .logo {
     font-family: 'Playfair Display', serif;
     font-size: 32px; 
@@ -78,48 +77,27 @@ body {
     white-space: nowrap;
 }
 
-/* Меню навигации */
+/* Навигация — крупные заметные ссылки */
 .nav {
     display: flex;
     justify-content: center;
     gap: 40px;
 }
 
-/* Объединенные базовые стили для ВСЕХ ссылок меню */
 .nav a {
+    color: #000000;
     text-decoration: none;
-    color: #000000;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 20px; /* Крупный читаемый размер */
+    font-size: 20px; /* Крупный размер для пунктов меню */
     font-weight: 500;
-    padding: 6px 14px;
-    border-radius: 6px;
-    display: inline-block;
+    transition: opacity 0.3s ease;
     white-space: nowrap;
-    border: 1.5px solid transparent; /* Заготовка под рамку, чтобы текст не прыгал */
-    transition: all 0.2s ease-in-out;
 }
 
-/* Стандартная серая рамка для пассивных вкладок */
-.nav a.nav-bordered {
-    border: 1px solid #e2e8f0;
-    color: #333333;
+.nav a:hover {
+    opacity: 0.6;
 }
 
-.nav a.nav-bordered:hover {
-    border-color: #a0aec0;
-    color: #000000;
-}
-
-/* Активная вкладка (сплошная черная обводка) */
-.nav a.active {
-    border: 1.5px solid #000000;
-    font-weight: 600;
-    color: #000000;
-    pointer-events: none;
-}
-
-/* Контакты и иконки в шапке */
+/* Блок контактов */
 .header-right {
     display: flex;
     align-items: center;
@@ -133,7 +111,7 @@ body {
 }
 
 .phone {
-    font-size: 22px;
+    font-size: 22px; /* Крупный и заметный номер телефона */
     font-weight: 600;
     display: block;
     margin-bottom: 2px;
@@ -148,27 +126,30 @@ body {
     transition: opacity 0.3s ease;
 }
 
+.vk-link:hover {
+    opacity: 0.6;
+}
+
+/* Правый блок интерфейса с иконками (Поиск, Юзер, Корзина) */
 .header-icons {
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 25px; /* Расстояние между иконками */
     margin-left: 10px;
 }
 
 .header-icons a {
     color: #000000;
-    font-size: 24px;
+    font-size: 24px; /* Крупный размер иконок интерфейса */
     transition: opacity 0.3s ease;
     text-decoration: none;
 }
 
-.vk-link:hover, .header-icons a:hover {
+.header-icons a:hover {
     opacity: 0.6;
 }
 
-/* ==========================================================================
-   4. КОНТЕНТ ГЛАВНОЙ СТРАНИЦЫ (HERO CONTENT)
-   ========================================================================== */
+/* Главный контент (Заголовок внизу) */
 .hero-content {
     max-width: 800px;
     margin-bottom: 40px;
@@ -201,15 +182,29 @@ h1 {
     opacity: 0.6;
 }
 
+/* Планшетная адаптация */
+@media (max-width: 1200px) {
+    .header {
+        gap: 20px;
+    }
+    .nav a {
+        font-size: 18px;
+    }
+    .phone {
+        font-size: 19px;
+    }
+}
 /* ==========================================================================
-   5. БЛОК "ПОЧЕМУ ВЫБИРАЮТ НАС"
+   Блок "Почему выбирают нас"
    ========================================================================== */
+
 .features-section {
     padding: 100px 60px;
-    background-color: #f8f9fa;
+    background-color: #f8f9fa; /* Мягкий светлый фон */
     text-align: center;
 }
 
+/* Заголовок секции */
 .features-title {
     font-family: 'Montserrat', sans-serif;
     font-size: 36px;
@@ -219,15 +214,17 @@ h1 {
     letter-spacing: -0.5px;
 }
 
+/* Контейнер для карточек (гибкая сетка) */
 .features-container {
     display: flex;
     justify-content: center;
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
-    flex-wrap: wrap;
+    flex-wrap: wrap; 
 }
 
+/* Стили самой карточки */
 .feature-card {
     background: #ffffff;
     border-radius: 12px;
@@ -248,9 +245,10 @@ h1 {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
 }
 
+/* Иконки преимуществ */
 .feature-icon {
     font-size: 40px;
-    color: #6c757d;
+    color: #6c757d; /* Спокойный графитовый цвет для иконок */
     margin-bottom: 20px;
     height: 60px;
     display: flex;
@@ -258,6 +256,7 @@ h1 {
     justify-content: center;
 }
 
+/* Название преимущества */
 .feature-name {
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
@@ -266,6 +265,7 @@ h1 {
     margin-bottom: 15px;
 }
 
+/* Описание */
 .feature-text {
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
@@ -274,20 +274,38 @@ h1 {
     font-weight: 400;
 }
 
+/* Адаптивность для планшетов и мобильных */
+@media (max-width: 992px) {
+    .features-section {
+        padding: 60px 30px;
+    }
+    .features-title {
+        font-size: 28px;
+        margin-bottom: 35px;
+    }
+    .feature-card {
+        padding: 30px 20px;
+    }
+}
 /* ==========================================================================
-   6. БЛОК "КАК МЫ РАБОТАЕМ"
+   Блок "Как мы работаем"
    ========================================================================== */
+
 .workflow-section {
     padding: 120px 60px;
-    background-color: #929ec4; 
+    background-color: #929ec4; /* Тот самый лавандово-сиреневый оттенок */
+    
+    /* Добавляем декоративные ягоды в правый верхний угол как на макете */
     background-image: url('../img/raspberries-decor.png'); 
     background-repeat: no-repeat;
     background-position: right top;
-    background-size: auto 80%; 
+    background-size: auto 80%; /* Картинка займет 80% высоты блока */
+    
     position: relative;
     text-align: center;
 }
 
+/* Белый заголовок секции */
 .workflow-title {
     font-family: 'Montserrat', sans-serif;
     font-size: 38px;
@@ -297,6 +315,7 @@ h1 {
     letter-spacing: -0.5px;
 }
 
+/* Сетка для трех шагов */
 .workflow-container {
     display: flex;
     justify-content: center;
@@ -307,13 +326,15 @@ h1 {
     flex-wrap: wrap;
 }
 
+/* Колонка отдельного шага */
 .workflow-step {
     flex: 1;
     min-width: 280px;
     max-width: 350px;
-    text-align: left;
+    text-align: left; /* Текст внутри колонок выровнен по левому краю */
 }
 
+/* Название шага */
 .step-name {
     font-family: 'Montserrat', sans-serif;
     font-size: 22px;
@@ -322,14 +343,16 @@ h1 {
     margin-bottom: 20px;
 }
 
+/* Описание шага */
 .step-text {
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.9); /* Мягкий белый цвет для лучшей читаемости */
     font-weight: 400;
 }
 
+/* Особенный стиль для ссылки-телефона внутри текста */
 .workflow-link {
     color: #ffffff;
     text-decoration: underline;
@@ -341,30 +364,192 @@ h1 {
     opacity: 0.8;
 }
 
+/* Адаптивность под планшеты и мобильные устройства */
+@media (max-width: 992px) {
+    .workflow-section {
+        padding: 70px 30px;
+        background-size: 150px auto; /* Уменьшаем декоративные ягоды на мобильных */
+    }
+    .workflow-title {
+        font-size: 30px;
+        margin-bottom: 40px;
+    }
+    .workflow-container {
+        gap: 35px;
+    }
+    .workflow-step {
+        max-width: 100%; /* На смартфонах шаги встанут строго друг под другом на всю ширину */
+    }
+}
+/* Общие стили для ссылок в меню */
+.menu a {
+    text-decoration: none;
+    color: #000000;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 6px 12px; /* Внутренние отступы, чтобы рамка не прилипала к тексту */
+    border: 1px solid transparent; /* Прозрачная рамка по умолчанию, чтобы текст не прыгал */
+    border-radius: 4px; /* Легкое скругление углов */
+    transition: all 0.2s ease-in-out;
+}
+
+/* Эффект при наведении на любую ссылку */
+.menu a:hover {
+    border-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Активный пункт меню (выделение рамкой) */
+.menu a.active {
+    border: 1.5px solid #000000; /* Четкая черная рамка как на макете */
+    font-weight: 600; /* Можно сделать текст чуть плотнее для акцента */
+    pointer-events: none; /* Отключаем кликабельность по активной ссылке */
+}
+/* Стили для активного пункта меню с рамкой */
+.nav a.active {
+    border: 1.5px solid #000000;
+    border-radius: 6px;
+    padding: 4px 12px;
+    font-weight: 600;
+    pointer-events: none; /* Чтобы нельзя было кликать по вкладке, на которой уже находишься */
+}
+
+/* На главной странице у ссылок нет рамки, добавим им невидимую границу, чтобы текст не прыгал */
+.nav a {
+    border: 1.5px solid transparent;
+    padding: 4px 12px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.nav a:hover {
+    border-color: rgba(0, 0, 0, 0.2);
+    opacity: 1;
+}
 /* ==========================================================================
-   7. СТРАНИЦА "О МНЕ" (ДВУХКОЛОНОЧНЫЙ МАКЕТ)
+   Стили для страницы "О мне" (без торта на фоне)
    ========================================================================== */
+
+/* Отключаем картинку и градиентную вуаль, ставим чистый кондитерский фон */
 .hero-about {
-    background: #ffffff !important; /* Белый фон вместо торта */
-    height: auto !important;
+    background: #fdfdfd !important; /* Чистый мягкий белый фон */
+}
+
+.hero-about::before {
+    display: none !important; /* Полностью убираем затемняющий фильтр */
+}
+
+/* Контейнер для текста */
+.about-content {
+    max-width: 750px;
+    margin-top: 160px; /* Чтобы текст не залезал под шапку */
+    margin-bottom: auto; /* Центрируем по вертикали */
+    position: relative;
+    z-index: 2;
+}
+
+/* Заголовок страницы */
+.about-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 500;
+    color: #000000;
+    margin-bottom: 30px;
+}
+
+/* Текстовые абзацы */
+.about-text-block p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    line-height: 1.7;
+    color: #212529;
+    margin-bottom: 20px;
+}
+
+/* Выделенный абзац про качество и любовь */
+.about-text-block .highlight-p {
+    font-size: 19px;
+    font-weight: 500;
+    background-color: #f3f4f6; /* Легкая серая плашка для акцента */
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #000000;
+}
+
+/* Строка доставки */
+.about-text-block .delivery-p {
+    font-weight: 600;
+    color: #000000;
+}
+
+.about-text-block .delivery-p i {
+    margin-right: 8px;
+}
+
+/* Большая заметная кнопка для связи */
+.about-btn {
+    display: inline-block;
+    background-color: #000000;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 15px 35px;
+    border-radius: 30px;
+    margin-top: 15px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.about-btn:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
+}
+
+/* Оптимизация под мобильные телефоны */
+@media (max-width: 768px) {
+    .about-content {
+        margin-top: 140px;
+        padding: 0 10px;
+    }
+    .about-title {
+        font-size: 36px;
+    }
+    .about-text-block p {
+        font-size: 16px;
+    }
+    .about-text-block .highlight-p {
+        font-size: 16px;
+        padding: 15px;
+    }
+}
+/* ==========================================================================
+   Страница "О мне" с двухколоночным макетом (Текст + Фото)
+   ========================================================================== */
+
+.hero-about {
+    background: #ffffff !important; /* Чистый белый фон как на макете */
+    height: auto !important; /* Позволяем контенту растягивать страницу вниз */
     min-height: 100vh;
 }
 
 .hero-about::before {
-    display: none !important; /* Отключаем фильтр */
+    display: none !important; /* Убираем полупрозрачную вуаль */
 }
 
-/* Контейнер-сетка */
+/* Главная двухколоночная сетка */
 .about-grid-container {
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
+    grid-template-columns: 1.2fr 1fr; /* Левая колонка под текст чуть шире правой */
     gap: 60px;
-    align-items: center;
+    align-items: center; /* Выравнивание по центру вертикали */
     max-width: 1200px;
-    margin: 160px auto 60px auto;
+    margin: 160px auto 60px auto; /* Отступ сверху, чтобы не упереться в шапку */
     width: 100%;
 }
 
+/* Блок с текстом */
 .about-content {
     text-align: left;
 }
@@ -385,7 +570,7 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* Серая контентная плашка */
+/* Серая плашка для важного текста */
 .about-text-block .highlight-p {
     background-color: #f4f5f7;
     padding: 22px;
@@ -400,7 +585,7 @@ h1 {
     color: #000000;
 }
 
-/* Кнопка */
+/* Черная кнопка-овал */
 .about-btn {
     display: inline-block;
     background-color: #000000;
@@ -420,7 +605,7 @@ h1 {
     transform: translateY(-1px);
 }
 
-/* Фотография */
+/* Правая колонка: обертка и само фото */
 .about-image-wrapper {
     display: flex;
     justify-content: center;
@@ -429,58 +614,220 @@ h1 {
 
 .about-img {
     width: 100%;
-    max-width: 480px;
+    max-width: 480px; /* Ограничиваем максимальную ширину фото */
     height: auto;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: 4px; /* Легкое, почти незаметное скругление углов */
 }
 
-/* ==========================================================================
-   8. АДАПТИВНОСТЬ (MEDIA QUERIES)
-   ========================================================================== */
-
-/* Большие планшеты и десктопы */
-@media (max-width: 1200px) {
-    .header { gap: 20px; }
-    .nav a { font-size: 18px; }
-    .phone { font-size: 19px; }
-}
-
-/* Средние планшеты */
+/* Адаптивность для планшетов и мобильных телефонов */
 @media (max-width: 992px) {
-    .features-section { padding: 60px 30px; }
-    .features-title { font-size: 28px; margin-bottom: 35px; }
-    .feature-card { padding: 30px 20px; }
-    
-    .workflow-section { padding: 70px 30px; background-size: 150px auto; }
-    .workflow-title { font-size: 30px; margin-bottom: 40px; }
-    .workflow-container { gap: 35px; }
-    .workflow-step { max-width: 100%; }
-
-    /* Перестроение страницы "О мне" в одну колонку */
     .about-grid-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; 
         gap: 40px;
         margin-top: 120px;
         padding: 0 20px;
     }
-    .about-image-wrapper { order: 2; }
-    .about-content { order: 1; }
-    .about-img { max-width: 100%; }
+    
+    .about-image-wrapper {
+        order: 2; 
+    }
+    
+    .about-content {
+        order: 1; 
+    }
+
+    .about-img {
+        max-width: 100%;
+    }
+}
+/* Общие базовые стили для всех ссылок в меню */
+.nav a {
+    text-decoration: none;
+    color: #000000;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 6px;
+    display: inline-block;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Стандартная серая рамка для обычных вкладок */
+.nav a.nav-bordered {
+    border: 1px solid #e2e8f0; /* Легкая серая обводка как на макете */
+    color: #333333;
+}
+
+/* Эффект при наведении на обычную вкладку */
+.nav a.nav-bordered:hover {
+    border-color: #a0aec0;
+    color: #000000;
+}
+
+/* Активная вкладка (Главная или О мне) — четкая черная рамка */
+.nav a.active {
+    border: 1.5px solid #000000; /* Более плотная черная рамка */
+    font-weight: 600;
+    color: #000000;
+    pointer-events: none; /* Отключаем клик по уже открытой странице */
 }
 /* ==========================================================================
-   9. СТРАНИЦА КАТАЛОГА
+   11. СТРАНИЦА НОВОСТЕЙ
+   ========================================================================== */
+.news-page {
+    background: #ffffff !important;
+    min-height: 100vh;
+    padding-top: 140px;
+}
+
+.news-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px 80px 20px;
+}
+
+.news-main-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 500;
+    color: #000000;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+/* Сетка карточек блогов */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 40px;
+}
+
+.news-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.01);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+}
+
+/* Обертка картинки и плашки-категории */
+.news-img-wrapper {
+    width: 100%;
+    height: 220px;
+    position: relative;
+    background-color: #f7fafc;
+}
+
+.news-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Разноцветные плашки-теги поверх картинок */
+.news-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+}
+
+.news-badge.alert { background-color: #e53e3e; } /* Красный */
+.news-badge.new { background-color: #38a169; }   /* Зеленый */
+.news-badge.info { background-color: #3182ce; }  /* Синий */
+
+/* Текстовая начинка новости */
+.news-body {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.news-date {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    color: #a0aec0;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.news-date i {
+    margin-right: 5px;
+}
+
+.news-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #000000;
+    line-height: 1.4;
+    margin-bottom: 12px;
+}
+
+.news-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #4a5568;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+/* Ссылка внизу новости */
+.news-link {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #000000;
+    text-decoration: none;
+    align-self: flex-start;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.news-link:hover {
+    opacity: 0.7;
+    border-color: #000000;
+}
+
+/* Адаптивность под смартфоны */
+@media (max-width: 768px) {
+    .news-main-title { font-size: 30px; margin-bottom: 30px; }
+    .news-grid { gap: 25px; }
+    .news-body { padding: 20px; }
+}
+/* ==========================================================================
+   9. СТРАНИЦА КАТАЛОГА (ИСПРАВЛЕННАЯ СЕТКА)
    ========================================================================== */
 .catalog-page {
     background: #ffffff !important;
     min-height: 100vh;
-    padding-top: 140px; /* Отступ сверху, чтобы шапка не перекрывала заголовок */
+    padding-top: 160px; /* Увеличили отступ, чтобы шапка не перекрывала заголовок */
 }
 
 .catalog-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 40px 20px 80px 20px;
+    width: 100%;
 }
 
 .catalog-main-title {
@@ -492,52 +839,58 @@ h1 {
     text-align: center;
 }
 
-/* Сетка для карточек */
+/* Жесткая сетка: автоматические колонки, которые не дадут картинкам сжать соседей */
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 40px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    width: 100%;
 }
 
 /* Карточка товара */
 .product-card {
     background: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
+    border: 1px solid #edf2f7;
+    border-radius: 12px;
     padding: 20px;
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+    overflow: hidden; /* Чтобы картинка не вылезала за края */
 }
 
 .product-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.06);
 }
 
-/* Контейнер для фото */
+/* Ограничитель высоты для фото тортов */
 .product-img-wrapper {
     width: 100%;
-    height: 260px;
-    background-color: #f7fafc; /* Временный фон, пока нет картинок */
-    border-radius: 6px;
+    height: 250px; /* Фиксированная высота для всех фото */
+    background-color: #f7fafc;
+    border-radius: 8px;
     overflow: hidden;
     margin-bottom: 20px;
 }
 
+/* Принудительное масштабирование картинок кондитерских изделий */
 .product-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; /* Обрезает фото по размеру рамки без искажения пропорций */
+    display: block;
 }
 
-/* Текст карточки */
+/* Текст внутри карточки */
 .product-title {
     font-family: 'Montserrat', sans-serif;
-    font-size: 20px;
+    font-size: 19px;
     font-weight: 600;
     color: #000000;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    line-height: 1.3;
 }
 
 .product-desc {
@@ -546,16 +899,17 @@ h1 {
     line-height: 1.6;
     color: #4a5568;
     margin-bottom: 25px;
-    flex-grow: 1; /* Подтягивает нижнюю часть к одному уровню */
+    flex-grow: 1; /* Выравнивает кнопки заказа по одной линии */
 }
 
-/* Низ карточки (Цена + Кнопка) */
+/* Подвал карточки */
 .product-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-top: 1px solid #edf2f7;
     padding-top: 15px;
+    margin-top: auto;
 }
 
 .product-price {
@@ -580,60 +934,4 @@ h1 {
 
 .order-btn:hover {
     background-color: #333333;
-}
-
-/* Мобильная адаптация */
-@media (max-width: 768px) {
-    .catalog-main-title { font-size: 30px; margin-bottom: 30px; }
-    .products-grid { gap: 25px; }
-}
-/* ==========================================================================
-   10. МОБИЛЬНАЯ АДАПТАЦИЯ ДЛЯ ЭКРАНОВ ДО 768px (СМАРТФОНЫ)
-   ========================================================================== */
-@media (max-width: 768px) {
-    
-    /* 1. Превращаем шапку из строчной сетки в вертикальную стопку */
-    .header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-        padding: 20px 15px;
-        position: relative; /* Шапка больше не перекрывает контент, а аккуратно идет сверху */
-        background: #ffffff; /* На мобильных делаем сплошной белый фон для читаемости */
-    }
-
-    /* 2. Делаем пункты меню более компактными */
-    .nav {
-        gap: 10px;
-        flex-wrap: wrap; /* Если не влезут в строку, перенесутся на следующую */
-        justify-content: center;
-    }
-
-    .nav a {
-        font-size: 15px; /* Уменьшаем шрифт меню для пальцев */
-        padding: 5px 10px;
-    }
-
-    /* 3. Выравниваем контакты по центру */
-    .contacts {
-        text-align: center;
-    }
-
-    .phone {
-        font-size: 18px; /* Чуть уменьшаем телефон */
-    }
-
-    /* 4. Корректируем главный экран (Hero) */
-    .hero {
-        height: auto;
-        min-height: calc(100vh - 180px); /* Вычитаем высоту мобильной шапки */
-        padding: 30px 20px;
-    }
-
-    /* 5. Уменьшаем огромный заголовок h1, чтобы он не разбивался некрасиво */
-    h1 {
-        font-size: 34px; 
-        margin-bottom: 20px;
-    }
 }

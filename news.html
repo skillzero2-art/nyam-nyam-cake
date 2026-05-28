@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nyam.nyam cake — Новости</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/main.css">
+
+    <style>
+        .news-page {
+            background: #ffffff !important;
+            min-height: 100vh;
+            padding-top: 160px;
+        }
+        .news-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px 80px 20px;
+            width: 100%;
+        }
+        .news-main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 40px;
+            font-weight: 500;
+            color: #000000;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            width: 100%;
+        }
+        .news-vk-card {
+            background: #ffffff;
+            border: 1px solid #edf2f7;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .news-vk-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.07);
+        }
+        .news-img-wrapper {
+            width: 100%;
+            height: 280px; /* Немного увеличили высоту для лучшего отображения тортов */
+            background-color: #f7fafc;
+            overflow: hidden;
+        }
+        .news-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .news-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .news-date {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 12px;
+            color: #a0aec0;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .news-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #2d3748;
+            margin-bottom: 15px;
+            flex-grow: 1;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .news-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #edf2f7;
+            padding-top: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: #49719a;
+        }
+        .vk-icon-link {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        @media (max-width: 768px) {
+            .news-page { padding-top: 120px; }
+            .news-main-title { font-size: 30px; margin-bottom: 30px; }
+            .news-grid { gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="news-page">
+        <header class="header">
+            <div class="logo">Nyam.nyam_cake</div>
+            <nav class="nav">
+                <a href="index.html" class="nav-bordered">Главная</a>
+                <a href="catalog.html" class="nav-bordered">Каталог</a>
+                <a href="news.html" class="active">Новости</a>
+                <a href="about.html" class="nav-bordered">О мне</a>
+            </nav>
+            <div class="header-right">
+                <div class="contacts">
+                    <span class="phone"><i class="fa-solid fa-headset" style="margin-right: 6px;"></i> +7 919 447 49 26</span>
+                    <div><a href="https://vk.com/nyam.nyam_cake" target="_blank" class="vk-link">ВК</a></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="news-container">
+            <h1 class="news-main-title">Новости из нашего сообщества</h1>
+            
+            <div class="news-grid">
+                
+                <a href="https://vk.com/wall-217019750_1044" target="_blank" class="news-vk-card">
+                    <div class="news-img-wrapper">
+                        <img src="https://sun9-29.userapi.com/s/v1/ig2/f43UwoOe_9LcJ1G6UUVdIrL9k2WVh6onkSWfC1kwbKzxbrP25KxxlMxzFO9bJ0geZwAHjlDbc7BNrVPfBUotR0Dq.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x854,720x960,1080x1441,1280x1708,1440x1921,1919x2560&from=bu&u=v3KmIahelkguSTDCD1JiKh1N6wocxvTNi-82KPsAZIE&cs=1919x0" alt="Торт Ламбет" class="news-img">
+                    </div>
+                    <div class="news-body">
+                        <span class="news-date"><i class="fa-brands fa-vk" style="color: #49719a;"></i> Запись на стене</span>
+                        <p class="news-text">Этот торт мне захотелось показать почему-то именно на черном фоне😎 Ламбет с бантами💖 с широкими🎀 , узкими лентами, белые, цветные... Торты в стиле Ламбет получаются всегда разные, но до сих пор не теряют своей популярности 🧡</p>
+                        <div class="news-footer">
+                            <span class="vk-icon-link"><i class="fa-regular fa-comment"></i> Обсудить в ВК</span>
+                            <span>Читать полностью →</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://vk.com/wall-217019750_1043" target="_blank" class="news-vk-card">
+                    <div class="news-img-wrapper">
+                        <img src="https://sun9-83.userapi.com/s/v1/ig2/rskFCBbLmof8fRhlJ12cxpA8K0iPB3yCVhxCq_PSAsvq7ZY91DOyCYEdVC3ybDNCsXlk8zcO8NR-4S7XlI90qpJ4.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,1080x1440,1280x1707,1440x1920,1800x2400&from=bu&u=v4it7f3CJWALNLQpxnA47-MActMCuXpCuOD-d1Y5fz0&cs=1800x0" alt="Свадебный торт со стойкой" class="news-img">
+                    </div>
+                    <div class="news-body">
+                        <span class="news-date"><i class="fa-brands fa-vk" style="color: #49719a;"></i> Запись на стене</span>
+                        <p class="news-text">Ура, каникулы! ☀️⛱️🕶️
+Мне кажется, мы (родители) заслужили эти три месяца отдыха😁 Ну, и наши детки тоже😂😂😂
+
+————————
+Друзья, хочу напомнить, что я делаю совершенно разные торты: от небольших муссовых до индивидуальных авторских проектов🤩
+
+В ассортименте :
+♥️торты
+♥️капкейки
+♥️трайфлы
+♥️эклеры
+♥️имбирные пряники
+♥️муссовые десерты
+И многое другое👋</p>
+                        <div class="news-footer">
+                            <span class="vk-icon-link"><i class="fa-regular fa-comment"></i> Обсудить в ВК</span>
+                            <span>Читать полностью →</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://vk.com/wall-217019750_1046" target="_blank" class="news-vk-card">
+                    <div class="news-img-wrapper">
+                        <img src="https://sun9-59.userapi.com/s/v1/ig2/AgwIzjDHnGL99S7009Xj7kWgXY12km-o_9mu1eJUeDGB3Su4PssbHvN-vtz52l9yrufpv_9E358vyc2i6UvHOMPX.jpg?quality=95&as=32x26,48x39,72x58,108x87,160x129,240x194,360x291,480x388,540x437,640x518,720x583,1080x874,1280x1036,1440x1165,2560x2072&from=bu&u=1ObEbfj_9euFY8Q9d3gWqrPb3a71GMXoDCie2mqiZTE&cs=2560x0" alt="Пирожные эскимо на палочке" class="news-img">
+                    </div>
+                    <div class="news-body">
+                        <span class="news-date"><i class="fa-brands fa-vk" style="color: #49719a;"></i> Запись на стене</span>
+                        <p class="news-text">Такой торт заказывают очень редко. А зря! Нежный открытый медовик😍 идеален для юбилеев👍</p>
+                        <div class="news-footer">
+                            <span class="vk-icon-link"><i class="fa-regular fa-comment"></i> Обсудить в ВК</span>
+                            <span>Читать полностью →</span>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
