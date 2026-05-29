@@ -15,13 +15,14 @@
         .news-page {
             background: #ffffff !important;
             min-height: 100vh;
-            padding-top: 160px;
+            padding-top: 140px; /* Базовый отступ для ПК */
         }
         .news-container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 40px 20px 80px 20px;
             width: 100%;
+            box-sizing: border-box;
         }
         .news-main-title {
             font-family: 'Playfair Display', serif;
@@ -55,7 +56,7 @@
         }
         .news-img-wrapper {
             width: 100%;
-            height: 280px; /* Немного увеличили высоту для лучшего отображения тортов */
+            height: 280px;
             background-color: #f7fafc;
             overflow: hidden;
         }
@@ -107,10 +108,23 @@
             align-items: center;
             gap: 5px;
         }
+
+        /* 📱 МОБИЛЬНАЯ АДАПТАЦИЯ КОНТЕНТА ТУТ */
         @media (max-width: 768px) {
-            .news-page { padding-top: 120px; }
-            .news-main-title { font-size: 30px; margin-bottom: 30px; }
-            .news-grid { gap: 20px; }
+            .news-page { 
+                padding-top: 210px; /* Увеличиваем верхний отступ, так как мобильная шапка стала выше */
+            }
+            .news-main-title { 
+                font-size: 28px; 
+                margin-bottom: 30px; 
+            }
+            .news-grid { 
+                grid-template-columns: 1fr; /* Карточки встают строго по одной в ряд */
+                gap: 20px; 
+            }
+            .news-img-wrapper {
+                height: 230px; /* Слегка уменьшаем высоту картинок на телефонах */
+            }
         }
     </style>
 </head>
